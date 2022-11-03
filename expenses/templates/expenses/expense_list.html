@@ -7,6 +7,7 @@
 <form method="get" action="">
   {{form.as_p}}
   <button type="submit">search</button>
+  
 </form>
 <br>
 <table border="1">
@@ -44,6 +45,19 @@
 </table>
 
 {% include "_pagination.html" %}
+
+<table border="1">
+	<caption>Total amount spent</caption>
+	<thead>
+	<tr>
+	  {% for string, decimal in total_amount_spent.items %}
+	  <tr>
+		  <td>{{decimal|floatformat:2}}</td>
+	  </tr>
+	  {% endfor %}	
+	</tr>
+	</thead>
+
 <hr>
 <table border="1">
   <caption>Summary per category</caption>
@@ -56,4 +70,27 @@
 	{% endfor %}
   </tr>
 </table>
+
+<hr>
+<table border="1">
+  <caption>Summary per year-month</caption>
+  <tr>
+    {% for amount, date in summary_per_year_month.items %}
+	<tr>
+		
+		<td>{{date|floatformat:2}}</td>
+		<td>{{amount}}</td>
+		
+		
+	
+	</tr>
+	{% endfor %}
+  </tr>
+</table>
+
+
+
+
 {% endblock %}
+
+
